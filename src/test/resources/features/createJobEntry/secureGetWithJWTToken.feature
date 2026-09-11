@@ -3,7 +3,7 @@ Feature: To send the get request with JWT Token
 GET http://localhost:9898/auth/webapi/all
 
   Background: Setup the URL
-    Given url 'http://localhost:9898'
+    Given url _url
 
   Scenario: Send the GET request with JWT token
     * def token = call read('classpath:features/createJobEntry/token/generateToken.feature') {"password": "adminKarate1234","username": "amfredericks"}

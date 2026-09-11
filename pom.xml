@@ -23,12 +23,12 @@
         </dependency>
 
         <!-- Source: https://mvnrepository.com/artifact/com.intuit.karate/karate-apache -->
-        <dependency>
-            <groupId>com.intuit.karate</groupId>
-            <artifactId>karate-apache</artifactId>
-            <version>0.9.6</version>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.intuit.karate</groupId>-->
+<!--            <artifactId>karate-apache</artifactId>-->
+<!--            <version>0.9.6</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!-- Source: https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
         <dependency>
@@ -48,9 +48,36 @@
                     <includes>
                         <include>**/TagRunnersWithCucumberReport.java</include>
                     </includes>
-                    <rerunFailingTestsCount>0</rerunFailingTestsCount>
+                    <rerunFailingTestsCount>1</rerunFailingTestsCount>
+                    <systemProperties>
+                        <karate.env>${karate.profiles}</karate.env>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>staging</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+            <karate.profiles>staging</karate.profiles>
+            </properties>
+        </profile>
+        <profile>
+            <id>preprod</id>
+            <properties>
+                <karate.profiles>preprod</karate.profiles>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <karate.profiles>prod</karate.profiles>
+            </properties>
+        </profile>
+    </profiles>
 </project>

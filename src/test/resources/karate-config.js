@@ -22,19 +22,19 @@ function fn() {
     // customize
   }else if (env == 'staging') {
 //  Initialize the config for staging
-    username: 'staging',
-    password: 'stagingwelcome',
-    _url: 'http://staging.localhost:9898'
+    config.username ='staging',
+    config.password ='stagingwelcome',
+    _url= 'http://staging.localhost:9898'
   }else if (env == 'preprod') {
 //  Initialize the config for preprod
-    username: 'preprod',
-    password: 'preprodwelcome',
-    _url: 'http://preprod.localhost:9898'
+    config.username = 'preprod',
+    config.password ='preprodwelcome',
+    _url= 'http://preprod.localhost:9898'
    }else if (env == 'prod') {
 //  Initialize the config for prod
-    username: 'prod',
-    password: 'prodwelcome',
-    _url: 'http://prod.localhost:9898'
+    config.username ='prod',
+    config.password = 'prodwelcome',
+    _url= 'http://prod.localhost:9898'
     }
 
   return config;

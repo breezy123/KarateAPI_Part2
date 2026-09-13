@@ -50,6 +50,8 @@ pipeline {
         always{
             junit 'target/karate-reports/*.xml'
             cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'target/karate-reports', pendingStepsNumber: -1, reportTitle: 'Karate Test Execution', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+            zip zipFile: 'target/test-result.zip', archive:true, dir: 'target/karate-reports', overwrite: true
+            emailext subject: 'Execution Report', body: 'Refer to the attachement', attachmentsPattern: 'target/test-result.zip', to: 'afredericksdvt@gmail.com'
         }
     }
 }

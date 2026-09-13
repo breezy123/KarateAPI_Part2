@@ -1,5 +1,6 @@
 package com.api.automation.runners.builder;
 
+import com.api.automation.config.report.CustomExtentReport;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import org.apache.commons.io.FileUtils;
@@ -25,6 +26,13 @@ public class TagRunnersWithCucumberReport {
                 .outputJunitXml(true)
                 .parallel(5);
 //        ~@Regression ignores the tag Regression
+
+        CustomExtentReport extentReport = new CustomExtentReport()
+                .withKarateResults(results)
+                .withReportDir(results.getReportDir())
+                .withReportTitle("Karate Test Execution Report");
+
+        extentReport.generateExtentReport();
 
         System.out.println("Total Feature => " + results.getFeaturesTotal());
         System.out.println("Total Scenarios => " + results.getScenariosTotal());
